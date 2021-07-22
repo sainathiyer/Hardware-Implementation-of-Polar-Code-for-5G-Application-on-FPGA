@@ -1,0 +1,35 @@
+module encoder(B1,B2,B3,B4,B5,B6,B7,B8,M1,M2,M3,M4);
+  //Defining the Inputs to the Design 
+  input M1;
+  input M2;
+  input M3;
+  input M4;
+  //Defining the Outputs from the Design
+  output B1;
+  output B2;
+  output B3;
+  output B4;
+  output B5;
+  output B6;
+  output B7;
+  output B8;
+  //Defining the Interconnecting Wires in the Design
+  wire M1xM2;
+  wire M1xM2xM3;
+  wire M1xM3;
+  wire M2xM3;
+  
+  //Defining the Processing Architecture of the Design
+  xor(M1xM2,M1,M2);
+  xor(M1xM2xM3,M1xM2,M3);
+  xor(B1,M1xM2xM3,M4);
+  xor(B2,M1xM2,M4);
+  xor(M1xM3,M1,M3);
+  xor(B3,M1xM3,M4);
+  xor(B4,M1,M4);
+  xor(M2xM3,M2,M3);
+  xor(B5,M2xM3,M4);
+  xor(B6,M2,M4);
+  xor(B7,M3,M4);
+  assign B8 = M4;
+endmodule

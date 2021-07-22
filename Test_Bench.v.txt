@@ -1,0 +1,21 @@
+module encoder_tb;
+  reg M1,M2,M3,M4;
+  wire B1,B2,B3,B4,B5,B6,B7,B8;
+  
+  encoder DUT1 (B1,B2,B3,B4,B5,B6,B7,B8,M1,M2,M3,M4);
+  
+  initial begin
+    for(integer i = 0;i<16;i=i+1) begin
+      #5 {M1,M2,M3,M4} = i;
+    end
+  end
+  
+  initial begin
+    $monitor(B1,B2,B3,B4,B5,B6,B7,B8);
+    $dumpfile("dump.vcd");
+    $dumpvars;
+  end
+  
+endmodule
+
+  
